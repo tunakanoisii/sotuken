@@ -29,7 +29,10 @@
 		}
 
 		fclose($fp);
+		?>
 
+		<h1>内容が送信されました</h1>
+		<?php
 		echo $date;
 		echo $all_data;
 		?>

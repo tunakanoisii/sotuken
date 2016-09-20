@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 	<meta charset="UFT-8">
-	<link rel="stylesheet" type="text/css" href="css/index.css"  />
+	<link rel="stylesheet" type="text/css" href="css/index.css">
 	<title>フォームからデータを受け取る</title>
 </head>
 
@@ -10,10 +10,10 @@
 	<div id="mainform">
 		<h1>フォームデータの送信</h1>
 
-		<form action="form_1.php" method="get">
-			<div class="contents">名前:</div>
+		<form action="form_1.php" method="post">
+			<div class="contents">[名前]</div>
 			<input type="text" name="your_name"><br/>
-			<div class="contents">コメント:</div>
+			<div class="contents">[内容]</div>
 			<textarea name="comment" cols="50" rows="5"></textarea><br/>
 			<input type ="submit" value="確認画面へ">
 		</form>

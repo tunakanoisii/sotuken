@@ -9,15 +9,8 @@
 <body>
 	<div id="mainform">
 		<?php
+		$all_data=$_GET['all_data'];
 		$date = date('Y/m/d H:i:s');
-		$your_name = $_GET['your_name'];
-		$comment = $_GET['comment'];
-		$comment = nl2br($comment);
-
-		$data = "<hr>\r\n";
-		$data = $data . "名前:" . $your_name . "<br />\r\n";
-		$data = $data . "内容:" . "<br />\r\n";
-		$data = $data . $comment . "<br />\r\n";
 
 		$form_file = 'form.txt';
 
@@ -25,7 +18,7 @@
 
 		if ($fp){
 			if (flock($fp, LOCK_EX)){
-				if (fwrite($fp,  $data) === FALSE){
+				if (fwrite($fp,  $all_data) === FALSE){
 					print('ファイル書き込みに失敗しました');
 				}
 
@@ -37,7 +30,8 @@
 
 		fclose($fp);
 
-		echo $data;
+		echo $date;
+		echo $all_data;
 		?>
 	</div>
 </body>

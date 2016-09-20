@@ -21,10 +21,10 @@
 		$data = $data . $comment . "<br />\r\n";
 
 		echo $data;
-		echo "以上の内容で間違いないですか？"
+		echo "<br>" . "以上の内容で間違いないですか？"
 		?>
 
-		<form action="form_2.php" method="post">
+		<form action="form_2.php" method="get">
 		<input type="hidden" name="all_data" value="<?php echo $data; ?>">
 		<input type="submit" value="送信">
 		</form>

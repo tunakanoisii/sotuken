@@ -23,7 +23,7 @@
 		echo "<br>" . "以上の内容で間違いないですか？"
 		?>
 
-		<form action="form_2.php" method="get">
+		<form action="form_2.php" method="POST">
 		<input type="hidden" name="all_data" value="<?php echo $data; ?>">
 		<input type="submit" value="送信">
 		</form>

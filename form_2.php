@@ -9,6 +9,8 @@
 <body>
 	<div id="mainform">
 		<?php
+		if($db = new SQLite3('/Applications/MAMP/db/sqlite/test.sqlite');
+
 		$all_data=$_GET['all_data'];
 		$date = date('Y/m/d H:i:s');
 

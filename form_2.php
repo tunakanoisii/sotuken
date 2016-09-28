@@ -18,8 +18,7 @@
 		//$db->exec("INSERT INTO info (name, own_text) VALUES (".$your_name.",".$all_data.")");
 		
 		//変数どうすればいいかわからないのおおおおお
-		//$db->query("INSERT INTO info (name, own_text) VALUES ("'.$your_name'","'.$all_data.'")");
-	
+		//$db->query("INSERT INTO info (name, own_text) VALUES ("'.$your_name.'","'.$all_data.'")");
 		?>
 
 		<h1>内容が送信されました</h1>

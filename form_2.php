@@ -35,8 +35,15 @@
 		<?php
 		echo $date;
 		echo $all_data;
-		
 		?>
+
+		<p>他にも内容を追加しますか？</p>
+		<form action="index.html" method="post">
+			<input type ="submit" value="続けて入力する">
+		</form>
+		<form action="index.html" method="post">
+			<input type ="submit" value="TOPページに戻る">
+		</form>
 	</div>
 </body>
 

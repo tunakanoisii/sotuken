@@ -6,9 +6,9 @@
 	<title>フォームからデータを受け取る</title>
 </head>
 <body>
-<<<<<<< Updated upstream
 	<div id="infos">
 		<div id="form"><p>入力フォームは<a href="form_top.html">こちら</p></a></div>
+
 		<?php
 		$db = new SQLite3('/Users/tunattu/test_db.db');
 
@@ -18,13 +18,14 @@
 		echo '<div class="own_info">';
 		echo '<p>' . $data[2] . '</p><br>';
 		echo '<p>[名前]' . $data[0] . '</p>';
-		echo '<p>[内容]<br>' . $data[1] . '</p>';
+		echo '<p>[内容]<br>' . $data[1] . '</p></div>';
 
-		}
-		$db->close();
-		?>
+	}
 
-	</div>
+	$db->close();
+	?>
+
+</div>
 
 </body>
 </html>

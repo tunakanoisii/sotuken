@@ -16,6 +16,7 @@ html, body{
 
 #mainform{
 	margin: 0 auto;
+	margin-top: 30px;
 	padding: 30px;
 	height: 501px;
 	width: 501px;
@@ -27,6 +28,10 @@ html, body{
 	width: 900px;
 	height: 100%;
 	padding: 30px;
+}
+
+#form a{
+	color:#FA8072;
 }
 
 .own_info{

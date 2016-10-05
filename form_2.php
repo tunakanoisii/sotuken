@@ -22,9 +22,10 @@
 		//変数どうすればいいかわからないのおおおおお
 		//$db->query("INSERT INTO info (name, own_text) VALUES ("'.$your_name.'","'.$all_data.'")");
 
-		$stmt = $db->prepare("INSERT INTO info(name, own_text) VALUES(?, ?)");
+		$stmt = $db->prepare("INSERT INTO info(name, own_text, date) VALUES(?, ?, ?)");
 		$stmt->bindParam(1, $your_name);
 		$stmt->bindParam(2, $comment);
+		$stmt->bindParam(3, $date);
 		$stmt->execute();
 
 		//echo $_SESSION["your_name"];
@@ -37,7 +38,7 @@
 		echo $all_data;
 		?>
 
-		<p>他にも内容を追加しますか？</p>
+		<br><p>他にも内容を追加しますか？</p>
 		<form action="form_top.html" method="post">
 			<input type ="submit" value="続けて入力する">
 		</form>

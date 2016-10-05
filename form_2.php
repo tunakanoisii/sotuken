@@ -39,6 +39,7 @@
 		?>
 
 		<br><p>他にも内容を追加しますか？</p>
+		<p>他にも内容を追加しますか？</p>
 		<form action="form_top.html" method="post">
 			<input type ="submit" value="続けて入力する">
 		</form>

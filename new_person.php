@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" type="text/css" href="css/index.css">
-  <title>会員登録</title>
-</head>
-
 <?php
 session_start();
-
 if(!empty($_POST)){
 
   if($_POST['name'] == ''){
@@ -25,7 +16,7 @@ if(!empty($_POST)){
 
   if(empty($error)){
     $_SESSION['join'] = $_POST;
-    header("Location: new_person_check.php");
+    header('Location: new_person_check.php');
     exit();
   }
 }
@@ -35,6 +26,13 @@ if($_REQUEST['action'] == 'rewrite'){
 }
 ?>
 
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+  <title>会員登録</title>
+</head>
 <body>
   <div id="mainform">
     <p>新規登録</p>

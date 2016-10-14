@@ -7,17 +7,12 @@ if(!isset($_SESSION['join'])){
   exit;
 }
 
-/* 明日はここから
+//問題部分＼(^o^)／
 if(isset($_POST)){
-  $sql = $db->prepare("INSERT INTO datas(id, name, pass) VALUES(?, ?, ?)");
+  $sql = $db->prepare("INSERT INTO datas(name, pass) VALUES(?, ?)");
 
-  $result=sqlite_query($db, 'select * from datas');
-  $handle=sqlite_num_rows($result);
-  $id_count= $handle ++;
-
-  $sql->bindParam(1, $id_count);
-  $sql->bindParam(2, sqlite_escape_string($db, $_SESSION['join']['name']));
-  $sql->bindParam(3, sqlite_escape_string($db, sha1($_SESSION['join']['pass'])));
+  $sql->bindParam(1, $_SESSION['join']['name']);
+  $sql->bindParam(2, sha1($_SESSION['join']['pass']));
   $sql->execute();
 
   unset($_SESSION['join']);
@@ -25,7 +20,6 @@ if(isset($_POST)){
   header('Location: new_person_ok.php');
   exit();
 }
-*/
 
 ?>
 

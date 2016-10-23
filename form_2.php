@@ -16,11 +16,6 @@
 		$comment = $_POST['comment'];
 
 		$date = date('Y/m/d H:i:s');
-		//$db->exec("CREATE TABLE info(name text, own_text text)");
-		//$db->exec("INSERT INTO info (name, own_text) VALUES (".$your_name.",".$all_data.")");
-		
-		//変数どうすればいいかわからないのおおおおお
-		//$db->query("INSERT INTO info (name, own_text) VALUES ("'.$your_name.'","'.$all_data.'")");
 
 		$stmt = $db->prepare("INSERT INTO info(name, own_text, date) VALUES(?, ?, ?)");
 		$stmt->bindParam(1, $your_name);

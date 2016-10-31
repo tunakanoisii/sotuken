@@ -1,3 +1,8 @@
+<?php
+session_start();
+require('db_connect.php');
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -7,11 +12,19 @@
 </head>
 <body>
 	<div id="infos">
-		<div id="form"><p>入力フォームは<a href="form_top.html">こちら</p></a></div>
+		<div id="form"><p>入力フォームは<a href="form_top.html">こちら</p></a>
+
+			<?php
+			$db = new SQLite3('/Users/tunattu/test_db.db');
+			if(isset($_SESSION['name'])) {
+				echo "ようこそ".$_SESSION['name']."さん";
+			} else {
+				echo "ログインはこちら";
+			}?>
+		</div>
+
 
 		<?php
-		$db = new SQLite3('/Users/tunattu/test_db.db');
-
 	$results = $db->query('SELECT * FROM info order by date desc');//DBのデータを降順にする
 
 	while($data = $results->fetchArray()){
@@ -26,6 +39,5 @@
 	?>
 
 </div>
-
 </body>
 </html>

@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -6,12 +10,23 @@
 	<title>フォームからデータを受け取る</title>
 </head>
 
+
+<header>
+<?php
+if(!isset($_SESSION['name'])){
+	echo '<div class="menu">新規登録</div>';
+	echo '<div class="menu">ログイン</div>';
+}else{
+	echo '<div class="menu">ログアウト</div>';
+	echo '<div class="menu">個人ページ</div>';
+}
+?>
+</header>
 <body>
 	<div id="mainform">
 		<h1>確認画面</h1>
 		<?php
-		session_start();
-		$your_name=$_POST['your_name'];
+		$your_name=$_SESSION['name'];
 		$comment = $_POST['comment'];
 
 		//$_SESSION['your_name']= $_POST['your_name'];

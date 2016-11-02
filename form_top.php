@@ -1,3 +1,8 @@
+<?php
+session_start();
+require('db_connect.php');
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -11,8 +16,10 @@
 		<h1>フォームデータの送信</h1>
 
 		<form action="form_1.php" method="post">
-			<div class="contents">[名前]</div>
-			<input type="text" name="your_name"><br/>
+			<?php 
+			echo '<div class="contents">[名前]<br/>'.$_SESSION['name'].'</div>'
+			?>
+			<br/>
 			<div class="contents">[内容]</div>
 			<textarea name="comment" cols="50" rows="5"></textarea><br/>
 			<input type ="submit" value="確認画面へ">

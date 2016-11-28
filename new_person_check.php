@@ -1,31 +1,11 @@
 <?php
 session_start();
-$db = new SQLite3('/Users/tunattu/own_data.db');
+require('db_connect.php');
 
 if(!isset($_SESSION['join'])){
   header('Location: new_person.php');
   exit;
 }
-
-/* 明日はここから
-if(isset($_POST)){
-  $sql = $db->prepare("INSERT INTO datas(id, name, pass) VALUES(?, ?, ?)");
-
-  $result=sqlite_query($db, 'select * from datas');
-  $handle=sqlite_num_rows($result);
-  $id_count= $handle ++;
-
-  $sql->bindParam(1, $id_count);
-  $sql->bindParam(2, sqlite_escape_string($db, $_SESSION['join']['name']));
-  $sql->bindParam(3, sqlite_escape_string($db, sha1($_SESSION['join']['pass'])));
-  $sql->execute();
-
-  unset($_SESSION['join']);
-
-  header('Location: new_person_ok.php');
-  exit();
-}
-*/
 
 ?>
 
@@ -39,7 +19,7 @@ if(isset($_POST)){
 
 <body>
   <div id="mainform">
-   <form action="" method="post">
+   <form action="check_test.php" method="post" name="check_ok">
      <dl>
        <dt>ユーザー名</dt>
        <dd><?php echo htmlspecialchars($_SESSION['join']['name'], ENT_QUOTES, 'UTF-8'); ?></dd>

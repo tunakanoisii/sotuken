@@ -28,33 +28,20 @@ require('db_connect.php');
 </header>
 
 <body>
-	<div id="infos">
-		<div id="form">
+	<div id="mainform">
+		<h1>フォームデータの送信</h1>
 
-			<?php
-			$db = new SQLite3('/Users/tunattu/test_db.db');
-			if(isset($_SESSION['name'])) {
-				echo "ようこそ".$_SESSION['name']."さん";
-			} else {
-				echo "ログインはこちら";
-			}?>
-		</div>
+		<form action="form_1.php" method="post">
+			<?php 
+			echo '<div class="contents">[名前]<br/>'.$_SESSION['name'].'</div>'
+			?>
+			<br/>
+			<div class="contents">[内容]</div>
+			<textarea name="comment" cols="70" rows="10"></textarea><br/>
+			<input type ="submit" value="確認画面へ">
+		</form>
 
-
-		<?php
-	$results = $db->query('SELECT * FROM info order by date desc');//DBのデータを降順にする
-
-	while($data = $results->fetchArray()){
-		echo '<div class="own_info">';
-		echo '<p>' . $data[2] . '</p><br>';
-		echo '<p>[内容]<br>' . $data[1] . '</p>';
-		echo '<div class="name_link">' . $data[0] . '</div></div>';
-
-	}
-
-	$db->close();
-	?>
-
-</div>
+	</div>
 </body>
+
 </html>

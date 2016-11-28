@@ -36,6 +36,12 @@ require('db_connect.php');
 			echo '<div class="contents">[名前]<br/>'.$_SESSION['name'].'</div>'
 			?>
 			<br/>
+			<div class="contents">[ジャンル]</div>
+			<input type="radio" name="select" value="選択肢1">良かった点
+			<input type="radio" name="select" value="選択肢1">改善点
+			<input type="radio" name="select" value="選択肢1">その他
+			<br/>
+			<br/>
 			<div class="contents">[内容]</div>
 			<textarea name="comment" cols="70" rows="10"></textarea><br/>
 			<input type ="submit" value="確認画面へ">

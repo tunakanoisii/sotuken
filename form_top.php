@@ -37,9 +37,9 @@ require('db_connect.php');
 			?>
 			<br/>
 			<div class="contents">[ジャンル]</div>
-			<input type="radio" name="select" value="選択肢1">良かった点
-			<input type="radio" name="select" value="選択肢1">改善点
-			<input type="radio" name="select" value="選択肢1">その他
+			<input type="radio" name="state" value="良かった点">良かった点
+			<input type="radio" name="state" value="改善点">改善点
+			<input type="radio" name="state" value="その他">その他
 			<br/>
 			<br/>
 			<div class="contents">[内容]</div>

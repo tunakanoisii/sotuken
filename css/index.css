@@ -87,14 +87,39 @@ header .menu a {
   position: absolute;
 }
 
-.own_info {
+.own_info_1 {
   margin: 0 5px;
   margin-top: 20px;
   padding: 20px;
   width: 248px;
-  height: 250px;
+  height: 300px;
   float: left;
   border: 1px solid #000;
+  background-color: #FFDAB9;
+  position: relative;
+}
+
+.own_info_2 {
+  margin: 0 5px;
+  margin-top: 20px;
+  padding: 20px;
+  width: 248px;
+  height: 300px;
+  float: left;
+  border: 1px solid #000;
+  background-color: #B0E0E6;
+  position: relative;
+}
+
+.own_info_3 {
+  margin: 0 5px;
+  margin-top: 20px;
+  padding: 20px;
+  width: 248px;
+  height: 300px;
+  float: left;
+  border: 1px solid #000;
+  background-color: #FFF;
   position: relative;
 }
 

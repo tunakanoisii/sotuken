@@ -29,14 +29,16 @@
 		$db = new SQLite3('/Users/tunattu/test_db.db');
 		$all_data= $_POST['all_data'];
 		$your_name=$_POST['your_name'];
+		$state=$_POST['state'];
 		$comment = $_POST['comment'];
 
 		$date = date('Y/m/d H:i:s');
 
-		$stmt = $db->prepare("INSERT INTO info(name, own_text, date) VALUES(?, ?, ?)");
+		$stmt = $db->prepare("INSERT INTO info(name, own_text, date, state) VALUES(?, ?, ?, ?)");
 		$stmt->bindParam(1, $your_name);
 		$stmt->bindParam(2, $comment);
 		$stmt->bindParam(3, $date);
+		$stmt->bindParam(4, $state);
 		$stmt->execute();
 
 		//echo $_SESSION["your_name"];

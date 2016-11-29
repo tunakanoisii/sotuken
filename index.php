@@ -45,15 +45,29 @@ require('db_connect.php');
 	$results = $db->query('SELECT * FROM info order by date desc');//DBのデータを降順にする
 
 	while($data = $results->fetchArray()){
-		echo '<div class="own_info">';
-		echo '<p>' . $data[2] . '</p><br>';
+		if($data[3]=='良かった点'){
+			echo '<div class="own_info_1">';
+		echo '<p>' . $data[2] . '</p><br>';//日付
+		echo '<p>' . $data[3] . '</p><br>';//良かった点、改善点、その他
 		echo '<p>[内容]<br>' . $data[1] . '</p>';
 		echo '<div class="name_link">' . $data[0] . '</div></div>';
-
+	}else if($data[3]=='改善点'){
+		echo '<div class="own_info_2">';
+		echo '<p>' . $data[2] . '</p><br>';//日付
+		echo '<p>' . $data[3] . '</p><br>';//良かった点、改善点、その他
+		echo '<p>[内容]<br>' . $data[1] . '</p>';
+		echo '<div class="name_link">' . $data[0] . '</div></div>';
+	}else if($data[3]==''){
+		echo '<div class="own_info_3">';
+		echo '<p>' . $data[2] . '</p><br>';//日付
+		echo '<p>' . $data[3] . '</p><br>';//良かった点、改善点、その他
+		echo '<p>[内容]<br>' . $data[1] . '</p>';
+		echo '<div class="name_link">' . $data[0] . '</div></div>';
 	}
+}
 
-	$db->close();
-	?>
+$db->close();
+?>
 
 </div>
 </body>

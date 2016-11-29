@@ -36,10 +36,17 @@ require('db_connect.php');
 			echo '<div class="contents">[名前]<br/>'.$_SESSION['name'].'</div>'
 			?>
 			<br/>
-			<div class="contents">[ジャンル]</div>
+			<div class="contents">[状態]</div>
 			<input type="radio" name="state" value="良かった点">良かった点
 			<input type="radio" name="state" value="改善点">改善点
-			<input type="radio" name="state" value="その他">その他
+			<input type="radio" name="state" value="次年度したい">次年度したい
+			<br/>
+			<br/>
+			<div class="contents">[関連項目]</div>
+			<input type="radio" name="genre" value="スケジュール">スケジュール
+			<input type="radio" name="genre" value="物品">物品
+			<input type="radio" name="genre" value="広報">広報
+			<input type="radio" name="genre" value="その他">その他
 			<br/>
 			<br/>
 			<div class="contents">[内容]</div>

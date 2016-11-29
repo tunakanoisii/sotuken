@@ -32,6 +32,7 @@ session_start();
 		<?php
 		$your_name=$_SESSION['name'];
 		$state = $_POST['state'];
+		$genre = $_POST['genre'];
 		$comment = $_POST['comment'];
 
 		//$_SESSION['your_name']= $_POST['your_name'];
@@ -40,7 +41,8 @@ session_start();
 
 		$data = "<hr>\r\n";
 		$data = $data . "[名前]<br />\r\n" . $your_name . "<br />\r\n";
-		$data = $data . "<br />\r\n[ジャンル]<br />\r\n" . $state . "<br />\r\n";
+		$data = $data . "<br />\r\n[状態]<br />\r\n" . $state . "<br />\r\n";
+		$data = $data . "<br />\r\n[関連項目]<br />\r\n" . $genre . "<br />\r\n";
 		$data = $data . "<br />\r\n[内容]" . "<br />\r\n";
 		$data = $data . $comment . "<br />\r\n";
 
@@ -53,6 +55,7 @@ session_start();
 			<input type="hidden" name="all_data" value="<?php echo $data; ?>">
 			<input type="hidden" name="your_name" value="<?php echo $your_name; ?>">
 			<input type="hidden" name="state" value="<?php echo $state; ?>">
+			<input type="hidden" name="genre" value="<?php echo $genre; ?>">
 			<input type="hidden" name="comment" value="<?php echo $comment; ?>">
 			<input type="submit" value="送信">
 		</form>

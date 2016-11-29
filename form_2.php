@@ -30,15 +30,17 @@
 		$all_data= $_POST['all_data'];
 		$your_name=$_POST['your_name'];
 		$state=$_POST['state'];
+		$genre=$_POST['genre'];
 		$comment = $_POST['comment'];
 
 		$date = date('Y/m/d H:i:s');
 
-		$stmt = $db->prepare("INSERT INTO info(name, own_text, date, state) VALUES(?, ?, ?, ?)");
+		$stmt = $db->prepare("INSERT INTO info(name, own_text, date, state, genre) VALUES(?, ?, ?, ?, ?)");
 		$stmt->bindParam(1, $your_name);
 		$stmt->bindParam(2, $comment);
 		$stmt->bindParam(3, $date);
 		$stmt->bindParam(4, $state);
+		$stmt->bindParam(5, $genre);
 		$stmt->execute();
 
 		//echo $_SESSION["your_name"];

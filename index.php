@@ -44,9 +44,16 @@ require('db_connect.php');
 		<?php
 	$results = $db->query('SELECT * FROM info order by date desc');//DBのデータを降順にする
 
+	/*
+	echo '<table border="1" width="1000" cellspacing="0" cellpadding="5" bordercolor="#000">';
+	echo '<tr>';
+	echo '<td bgcolor="#FFF"><font color="#000">スケジュール</font></td>'
+	echo '<td bgcolor="#FFF" whith="700">'
+	*/
 	while($data = $results->fetchArray()){
-		if($data[3]=='良かった点'){
-			echo '<div class="own_info_1">';
+		if($data[4]=='スケジュール'){
+			if($data[3]=='良かった点'){
+				echo '<div class="own_info_1">';
 		echo '<p>' . $data[2] . '</p><br>';//日付
 		echo '<p>' . $data[3] . '</p><br>';//良かった点、改善点、その他
 		echo '<p>[内容]<br>' . $data[1] . '</p>';
@@ -57,7 +64,7 @@ require('db_connect.php');
 		echo '<p>' . $data[3] . '</p><br>';//良かった点、改善点、その他
 		echo '<p>[内容]<br>' . $data[1] . '</p>';
 		echo '<div class="name_link">' . $data[0] . '</div></div>';
-	}else if($data[3]==''){
+	}else if($data[3]=='次年度したい'){
 		echo '<div class="own_info_3">';
 		echo '<p>' . $data[2] . '</p><br>';//日付
 		echo '<p>' . $data[3] . '</p><br>';//良かった点、改善点、その他
@@ -65,6 +72,12 @@ require('db_connect.php');
 		echo '<div class="name_link">' . $data[0] . '</div></div>';
 	}
 }
+}
+/*
+echo '</td>'
+echo '</tr>'
+echo '</table>'
+*/
 
 $db->close();
 ?>

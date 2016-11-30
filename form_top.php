@@ -44,7 +44,7 @@ require('db_connect.php');
 			<br/>
 			<div class="contents">[関連項目]</div>
 			<?php
-			$db = new SQLite3('/Users/tunattu/test_db.db');
+			$db = new SQLite3('/Applications/MAMP/db/sqlite/test_db.db');
 			$query = "SELECT genre from info group by genre";
 			$results = $db->query($query);
 

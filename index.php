@@ -32,7 +32,8 @@ require('db_connect.php');
 		<div id="form">
 
 			<?php
-			$db = new SQLite3('/Users/tunattu/test_db.db');
+			//$db = new SQLite3('/Applications/MAMP/db/sqlite/test_db.db');
+			$db = new SQLite3('C:¥xampp¥test_db.db');
 			if(isset($_SESSION['name'])) {
 				echo "ようこそ".$_SESSION['name']."さん";
 			} else {

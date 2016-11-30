@@ -55,7 +55,7 @@ require('db_connect.php');
 				echo '<p>' . $data[2] . '</p><br>';//日付
 				echo '<p>[内容]<br>' . $data[1] . '</p>';
 				echo '<div class="name_link">' . $data[0] . '</div></div>';
-			}else if($data[3]=='改善点'){
+			}else if($data[3]=='問題点'){
 				echo '<div class="own_info_2">';
 				echo '<p>' . $data[2] . '</p><br>';//日付
 				echo '<p>[内容]<br>' . $data[1] . '</p>';
@@ -80,7 +80,7 @@ require('db_connect.php');
 				echo '<p>' . $data[2] . '</p><br>';//日付
 				echo '<p>[内容]<br>' . $data[1] . '</p>';
 				echo '<div class="name_link">' . $data[0] . '</div></div>';
-			}else if($data[3]=='改善点'){
+			}else if($data[3]=='問題点'){
 				echo '<div class="own_info_2">';
 				echo '<p>' . $data[2] . '</p><br>';//日付
 				echo '<p>[内容]<br>' . $data[1] . '</p>';

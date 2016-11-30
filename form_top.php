@@ -38,23 +38,28 @@ require('db_connect.php');
 			<br/>
 			<div class="contents">[状態]</div>
 			<input type="radio" name="state" value="良かった点">良かった点
-			<input type="radio" name="state" value="改善点">改善点
+			<input type="radio" name="state" value="問題点">問題点
 			<input type="radio" name="state" value="次年度したい">次年度したい
 			<br/>
 			<br/>
 			<div class="contents">[関連項目]</div>
-			<input type="radio" name="genre" value="スケジュール">スケジュール
-			<input type="radio" name="genre" value="物品">物品
-			<input type="radio" name="genre" value="広報">広報
-			<input type="radio" name="genre" value="その他">その他
-			<br/>
-			<br/>
-			<div class="contents">[内容]</div>
-			<textarea name="comment" cols="70" rows="10"></textarea><br/>
-			<input type ="submit" value="確認画面へ">
-		</form>
+			<?php
+			$db = new SQLite3('/Users/tunattu/test_db.db');
+			$query = "SELECT genre from info group by genre";
+			$results = $db->query($query);
 
-	</div>
+			while($data = $results->fetchArray()){
+				echo '<input type="radio" name="genre" value=' . "'$data[0]'" . '>' . "$data[0]";
+			}
+			?>
+		<br/>
+		<br/>
+		<div class="contents">[内容]</div>
+		<textarea name="comment" cols="70" rows="10"></textarea><br/>
+		<input type ="submit" value="確認画面へ">
+	</form>
+
+</div>
 </body>
 
 </html>

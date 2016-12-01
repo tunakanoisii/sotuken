@@ -5,8 +5,8 @@ require('db_connect.php');
 if(!empty($_POST)){
 	if($_POST['name'] != '' && $_POST['pass'] != ''){
 		$sql = sprintf('SELECT * FROM datas WHERE name="%s" AND pass="%s"', 
-			SQLite3::escapeString($_POST['name']),
-			SQLite3::escapeString(sha1($_POST['pass']))
+			htmlspecialchars($_POST['name']),
+			sha1(htmlspecialchars($_POST['pass']))
 			); 
 		$record = $db->query($sql) or die(sqlite_error($db));
 
@@ -33,7 +33,7 @@ if(!empty($_POST)){
 </head>
 <body>
 	<div id="mainform">
-		<p>新規登録はこちらから</p>
+		<p>新規登録は<a href="new_person.php">こちら</a>から</p>
 		<form action="" method="post" accept-charset="utf-8">
 			<dl>
 				<dt>名前</dt>
@@ -50,3 +50,5 @@ if(!empty($_POST)){
 	</div>
 </body>
 </html>
+<?php
+//うぇい

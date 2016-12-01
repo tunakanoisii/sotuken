@@ -36,7 +36,7 @@ if($_REQUEST['action'] == 'rewrite'){
 <body>
   <div id="mainform">
     <p>新規登録</p>
-    <form action="" method="post" enctype="multipart/form-data">
+    <form action="new_person.php" method="post" enctype="multipart/form-data">
       <dl>
         <dt>ユーザー名<font color="red"> ※必須</font></dt>
         <dd>

@@ -35,15 +35,21 @@ require('db_connect.php');
 			<br/>
 			<div class="contents">[状態]</div>
 			<input type="radio" name="state" value="良かった点">良かった点
-			<input type="radio" name="state" value="改善点">改善点
+			<input type="radio" name="state" value="問題点">問題点
 			<input type="radio" name="state" value="次年度したい">次年度したい
 			<br/>
 			<br/>
 			<div class="contents">[関連項目]</div>
-			<input type="radio" name="genre" value="スケジュール">スケジュール
-			<input type="radio" name="genre" value="物品">物品
-			<input type="radio" name="genre" value="広報">広報
-			<input type="radio" name="genre" value="その他">その他
+			<?php
+			$db = new SQLite3('/Applications/MAMP/db/sqlite/test_db.db');
+			//$db = new SQLite3('C:\xampp\db\test_db.db');
+			$query = "SELECT genre from info group by genre";
+			$results = $db->query($query);
+
+			while($data = $results->fetchArray()){
+				echo '<input type="radio" name="genre" value=' . "'$data[0]'" . '>' . "$data[0]";
+			}
+			?>
 			<br/>
 			<br/>
 			<div class="contents">[内容]</div>
@@ -69,7 +75,7 @@ require('db_connect.php');
 		echo '<p>' . $data[3] . '</p><br>';//良かった点、改善点、その他
 		echo '<p>[内容]<br>' . $data[1] . '</p>';
 		echo '<div class="name_link">' . $data[0] . '</div></div>';
-	}else if($data[3]=='改善点'){
+	}else if($data[3]=='問題点'){
 		echo '<div class="own_info_2">';
 		echo '<p>' . $data[2] . '</p><br>';//日付
 		echo '<p>' . $data[3] . '</p><br>';//良かった点、改善点、その他

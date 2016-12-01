@@ -8,7 +8,7 @@ require('db_connect.php');
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="css/index.css">
-	<title>フォームからデータを受け取る</title>
+	<title>継承システム</title>
 </head>
 
 <header>
@@ -17,7 +17,7 @@ require('db_connect.php');
 	</div>
 	<?php
 	if(!isset($_SESSION['name'])){
-		echo '<div class="menu">新規登録</div>';
+		echo '<div class="menu"><a href="new_person.php">新規登録</a></div>';
 		echo '<div class="menu"><a href="login.php">ログイン</a></div>';
 	}else{
 		echo '<div class="menu"><a href="logout.php">ログアウト</div>';
@@ -76,6 +76,31 @@ require('db_connect.php');
 	echo '<td bgcolor="#FFF" width="620">';
 	while($data = $results->fetchArray()){
 		if($data[4]=='物品'){
+			if($data[3]=='良かった点'){
+				echo '<div class="own_info_1">';
+				echo '<p>' . $data[2] . '</p><br>';//日付
+				echo '<p>[内容]<br>' . $data[1] . '</p>';
+				echo '<div class="name_link">' . $data[0] . '</div></div>';
+			}else if($data[3]=='問題点'){
+				echo '<div class="own_info_2">';
+				echo '<p>' . $data[2] . '</p><br>';//日付
+				echo '<p>[内容]<br>' . $data[1] . '</p>';
+				echo '<div class="name_link">' . $data[0] . '</div></div>';
+			}else if($data[3]=='次年度したい'){
+				echo '<div class="own_info_3">';
+				echo '<p>' . $data[2] . '</p><br>';//日付
+				echo '<p>[内容]<br>' . $data[1] . '</p>';
+				echo '<div class="name_link">' . $data[0] . '</div></div>';
+			}
+		}
+		}
+	echo '</td>';
+	echo '</tr>';
+	echo '<tr>';
+	echo '<td bgcolor="#FFF" width="120" align="center"><font color="#000">広報</font></td>';
+	echo '<td bgcolor="#FFF" width="620">';
+	while($data = $results->fetchArray()){
+		if($data[4]=='広報'){
 			if($data[3]=='良かった点'){
 				echo '<div class="own_info_1">';
 				echo '<p>' . $data[2] . '</p><br>';//日付

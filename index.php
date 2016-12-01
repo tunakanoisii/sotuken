@@ -20,7 +20,7 @@ require('db_connect.php');
 		echo '<div class="menu">新規登録</div>';
 		echo '<div class="menu"><a href="login.php">ログイン</a></div>';
 	}else{
-		echo '<div class="menu">ログアウト</div>';
+		echo '<div class="menu"><a href="logout.php">ログアウト</div>';
 		echo '<div class="menu"><a href="mypage.php">マイページ</a></div>';
 		echo '<div class="menu"><a href="form_top.php">投稿する</a></div>';
 	}
@@ -32,8 +32,8 @@ require('db_connect.php');
 		<div id="form">
 
 			<?php
-			//$db = new SQLite3('/Applications/MAMP/db/sqlite/test_db.db');
-			$db = new SQLite3('C:\xampp\db\test_db.db');
+			$db = new SQLite3('/Applications/MAMP/db/sqlite/test_db.db');
+			//$db = new SQLite3('C:\xampp\db\test_db.db');
 			if(isset($_SESSION['name'])) {
 				echo "ようこそ".$_SESSION['name']."さん";
 			} else {

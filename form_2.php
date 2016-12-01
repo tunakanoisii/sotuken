@@ -26,7 +26,8 @@
 	<div id="mainform">
 		<?php
 		session_start();
-		$db = new SQLite3('/Users/tunattu/test_db.db');
+		$db = new SQLite3('/Applications/MAMP/db/sqlite/test_db.db');
+		//$db = new SQLite3('C:\xampp\db\test_db.db');
 		$all_data= $_POST['all_data'];
 		$your_name=$_POST['your_name'];
 		$state=$_POST['state'];

@@ -31,6 +31,21 @@ if(!empty($_POST)){
 	<link rel="stylesheet" type="text/css" href="css/index.css">
 	<title>ログイン画面</title>
 </head>
+<header>
+	<div id="top">
+		<a href="index.php">トップページに戻るよ！</a>
+	</div>
+	<?php
+	if(!isset($_SESSION['name'])){
+		echo '<div class="menu">新規登録</div>';
+		echo '<div class="menu"><a href="login.php">ログイン</a></div>';
+	}else{
+		echo '<div class="menu"><a href="logout.php">ログアウト</div>';
+		echo '<div class="menu"><a href="mypage.php">マイページ</a></div>';
+		echo '<div class="menu"><a href="form_top.php">投稿する</a></div>';
+	}
+	?>
+</header>
 <body>
 	<div id="mainform">
 		<p>新規登録は<a href="new_person.php">こちら</a>から</p>

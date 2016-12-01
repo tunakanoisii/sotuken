@@ -55,7 +55,8 @@ require('db_connect.php');
 	<div id="mypage_toukou">
 		<?php
 		echo '<h1>' . $_SESSION['name'] . 'さんの投稿</h1>';
-		$db = new SQLite3('/Users/tunattu/test_db.db');
+		$db = new SQLite3('/Applications/MAMP/db/sqlite/test_db.db');
+		//$db = new SQLite3('C:\xampp\db\test_db.db');
 
 		$query = "SELECT * FROM info WHERE name='" . $_SESSION['name'] . "' order by date desc";
 		$results = $db->query($query);
@@ -74,7 +75,7 @@ require('db_connect.php');
 		echo '<p>' . $data[3] . '</p><br>';//良かった点、改善点、その他
 		echo '<p>[内容]<br>' . $data[1] . '</p>';
 		echo '<div class="name_link">' . $data[0] . '</div></div>';
-	}else if($data[3]==''){
+	}else if($data[3]=='次年度したい'){
 		echo '<div class="own_info_3">';
 		echo '<p>' . $data[2] . '</p><br>';//日付
 		echo '<p>' . $data[3] . '</p><br>';//良かった点、改善点、その他

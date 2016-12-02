@@ -41,8 +41,8 @@ require('db_connect.php');
 			<br/>
 			<div class="contents">[関連項目]</div>
 			<?php
-			$db = new SQLite3('/Applications/MAMP/db/sqlite/test_db.db');
-			//$db = new SQLite3('C:\xampp\db\test_db.db');
+			//$db = new SQLite3('/Applications/MAMP/db/sqlite/test_db.db');
+			$db = new SQLite3('C:\xampp\db\test_db.db');
 			$query = "SELECT genre from info group by genre";
 			$results = $db->query($query);
 
@@ -61,8 +61,8 @@ require('db_connect.php');
 	<div id="mypage_toukou">
 		<?php
 		echo '<h1>' . $_SESSION['name'] . 'さんの投稿</h1>';
-		$db = new SQLite3('/Applications/MAMP/db/sqlite/test_db.db');
-		//$db = new SQLite3('C:\xampp\db\test_db.db');
+		//$db = new SQLite3('/Applications/MAMP/db/sqlite/test_db.db');
+		$db = new SQLite3('C:\xampp\db\test_db.db');
 
 		$query = "SELECT * FROM info WHERE name='" . $_SESSION['name'] . "' order by date desc";
 		$results = $db->query($query);

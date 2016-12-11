@@ -28,7 +28,7 @@ require('db_connect.php');
 
 <body>
 	<div class="mypage_form">
-		<form method="post"　action="mypage.php">
+		<form method="post" action="form_1.php">
 			<?php 
 			echo '<div class="contents">[名前]<br/>'.$_SESSION['name'].'</div>'
 			?>
@@ -41,6 +41,7 @@ require('db_connect.php');
 			<br/>
 			<br/>
 			<div class="contents">[関連項目]</div>
+
 			<?php
 			$db = new SQLite3('/Applications/MAMP/db/sqlite/test_db.db');
 			$query = "SELECT * from info";
@@ -59,46 +60,46 @@ require('db_connect.php');
 			}
 			?>
 
+			<!--
 			<p><input type="text" name="new_genre" size="30"></p>
-			<p>
-			<input type="submit" name="add" value="追加">
-			</p>
+			<p><input type="submit" name="add" value="追加"></p>
+			-->
 
-			</br>
-			<div class="contents">[内容]</div>
-			<textarea name="comment" cols="45" rows="10"></textarea><br/>
-			<input type ="submit" name="kakunin" value="確認画面へ">
-		</form>
-	</div>
+		</br>
+		<div class="contents">[内容]</div>
+		<textarea name="comment" cols="45" rows="10"></textarea><br/>
+		<input type ="submit" name="kakunin" value="確認画面へ">
+	</form>
+</div>
 
-	<?php
-	if(isset($_POST['add'])){
-		$query = "SELECT * from info";
-		$results = $db->query($query);
-
-		while($data = $results->fetchArray()){
-			if(!in_array($_POST['add'], $arr)) {
-				array_push($arr, $_POST['add']);
-			}
+<?php
+/*
+if(isset($_POST['add'])){
+	while($data = $results->fetchArray()){
+		if(!in_array($_POST['add'], $arr)) {
+			array_push($arr, $_POST['add']);
 		}
-		echo '追加するよー';
-	}else if(isset($_POST['kakunin'])){
-		echo '確認に飛ぶよー';
 	}
-	?>
+	echo '追加するよー';
+}else if(isset($_POST['kakunin'])){
+	header('Location: index.php');
+  exit;
+}
+*/
+?>
 
-	<div id="mypage_toukou">
-		<?php
-		echo '<h1>' . $_SESSION['name'] . 'さんの投稿</h1>';
-		$db = new SQLite3('/Applications/MAMP/db/sqlite/test_db.db');
+<div id="mypage_toukou">
+	<?php
+	echo '<h1>' . $_SESSION['name'] . 'さんの投稿</h1>';
+	$db = new SQLite3('/Applications/MAMP/db/sqlite/test_db.db');
 
-		$query = "SELECT * FROM info WHERE name='" . $_SESSION['name'] . "' order by date desc";
-		$results = $db->query($query);
+	$query = "SELECT * FROM info WHERE name='" . $_SESSION['name'] . "' order by date desc";
+	$results = $db->query($query);
 	//セッションデータと照らし合わせ
 
-		while($data = $results->fetchArray()){
-			if($data[3]=='良かった点'){
-				echo '<div class="own_info_1">';
+	while($data = $results->fetchArray()){
+		if($data[3]=='良かった点'){
+			echo '<div class="own_info_1">';
 		echo '<p>' . $data[2] . '</p><br>';//日付
 		echo '<p>' . $data[3] . '</p><br>';//良かった点、改善点、その他
 		echo '<p>[内容]<br>' . $data[1] . '</p>';

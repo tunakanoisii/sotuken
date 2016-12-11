@@ -45,21 +45,32 @@ require('db_connect.php');
 		$query = "SELECT * from info";
 	$results = $db->query('SELECT * FROM info order by date desc');//DBのデータを降順にする
 
-	$arr = array("スケジュール","物品","広報");
+	$genre_arr = array("スケジュール","物品","広報");
+	$event_arr = array("");
 
-	while($data = $results->fetchArray()){
-		if(!in_array($data["genre"], $arr)) {
-			array_push($arr, $data["genre"]);
+	while($genre_data = $results->fetchArray()){
+		if(!in_array($genre_data["genre"], $genre_arr)) {
+			array_push($genre_arr, $genre_data["genre"]);
 		}
 	}
 
-	foreach ($arr as $v) {
-		echo '<table border="1" width="740" cellspacing="0" cellpadding="5" bordercolor="#000">';
+	while($event_data = $results->fetchArray()){
+		if(!in_array($event_data["event"], $event_arr)) {
+			array_push($event_arr, $event_data["event"]);
+		}
+	}
+
+	echo '<table border="1"  cellspacing="0" cellpadding="5" bordercolor="#000">';
+	foreach ($event_arr as $t) {
+		echo '<th bgcolor="#FFF" width="620"><font color="#000">' . $t . '</font></th>';
+	}
+
+	foreach ($genre_arr as $v) {
 		echo '<tr>';
 		echo '<td bgcolor="#FFF" width="120" align="center"><font color="#000">' . $v . '</font></td>';
 		echo '<td bgcolor="#FFF" width="620">';
 		while($data = $results->fetchArray()){
-			if($data[4]== $v){
+			if($data[4]== $v and $data[5]==$t){
 				if($data[3]=='良かった点'){
 					echo '<div class="own_info_1">';
 				echo '<p>' . $data[2] . '</p><br>';//日付

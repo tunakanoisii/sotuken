@@ -9,7 +9,8 @@
         $tx = $_POST["text"];
         $st = $_POST["state"];
         $ge = $_POST["genre"];
-        $sql = "insert into info(name, own_text, date, state, genre) values('".$nm."','".$tx."','".date('Y/m/d H:i:s')."','".$st."','".$ge."')";
+        $ev = $_POST["event"];
+        $sql = "insert into info(name, own_text, date, state, genre ,event) values('".$nm."','".$tx."','".date('Y/m/d H:i:s')."','".$st."','".$ge."','".$ev."')";
         $db->query($sql);
         header("Location: db.php");
     }
@@ -42,6 +43,7 @@ $(document).ready(function() {
     echo "<th>日付</th>";
     echo "<th>state</th>";
     echo "<th>ジャンル</th>";
+    echo "<th>イベント名</th>";
     echo "</tr>";
     echo "</thead>";
     echo "<tbody>";
@@ -52,6 +54,7 @@ $(document).ready(function() {
         print "<td>".$data["date"]."</td>";
         print "<td>".$data["state"]."</td>";
         print "<td>".$data["genre"]."</td>";
+        print "<td>".$data["event"]."</td>";
         print "</tr>";
     }
     echo "</tbody>";
@@ -72,6 +75,9 @@ $(document).ready(function() {
 		<br>
         <label for="genre">ジャンル</label>
         <input type="text" id="genre" name="genre" value="">
+        <br>
+        <label for="genre">イベント名</label>
+        <input type="text" id="event" name="event" value="">
         <br>
 		<input type="submit" id="add" name="add" value="追加">
 		</fieldset>

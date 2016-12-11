@@ -43,14 +43,22 @@ require('db_connect.php');
 			<br/>
 			<br/>
 			<div class="contents">[関連項目]</div>
+			
 			<?php
 			$db = new SQLite3('/Applications/MAMP/db/sqlite/test_db.db');
-			//$db = new SQLite3('C:\xampp\db\test_db.db');
-			$query = "SELECT genre from info group by genre";
+			$query = "SELECT * from info";
 			$results = $db->query($query);
 
+			$arr = array("スケジュール","物品","広報");
+
 			while($data = $results->fetchArray()){
-				echo '<input type="radio" name="genre" value=' . "'$data[0]'" . '>' . "$data[0]";
+				if(!in_array($data["genre"], $arr)) {
+					array_push($arr, $data["genre"]);
+				}
+			}
+
+			foreach ($arr as $v) {
+				echo '<input type="radio" name="genre" value="'.$v.'">'.$v;
 			}
 			?>
 		<br/>

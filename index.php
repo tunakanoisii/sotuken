@@ -33,7 +33,6 @@ require('db_connect.php');
 
 			<?php
 			$db = new SQLite3('/Applications/MAMP/db/sqlite/test_db.db');
-			//$db = new SQLite3('C:\xampp\db\test_db.db');
 			if(isset($_SESSION['name'])) {
 				echo "ようこそ".$_SESSION['name']."さん";
 			} else {
@@ -42,17 +41,27 @@ require('db_connect.php');
 		</div>
 
 
-	<?php
+		<?php
+		$query = "SELECT * from info";
 	$results = $db->query('SELECT * FROM info order by date desc');//DBのデータを降順にする
 
-	echo '<table border="1" width="740" cellspacing="0" cellpadding="5" bordercolor="#000">';
-	echo '<tr>';
-	echo '<td bgcolor="#FFF" width="120" align="center"><font color="#000">スケジュール</font></td>';
-	echo '<td bgcolor="#FFF" width="620">';
+	$arr = array("スケジュール","物品","広報");
+
 	while($data = $results->fetchArray()){
-		if($data[4]=='スケジュール'){
-			if($data[3]=='良かった点'){
-				echo '<div class="own_info_1">';
+		if(!in_array($data["genre"], $arr)) {
+			array_push($arr, $data["genre"]);
+		}
+	}
+
+	foreach ($arr as $v) {
+		echo '<table border="1" width="740" cellspacing="0" cellpadding="5" bordercolor="#000">';
+		echo '<tr>';
+		echo '<td bgcolor="#FFF" width="120" align="center"><font color="#000">' . $v . '</font></td>';
+		echo '<td bgcolor="#FFF" width="620">';
+		while($data = $results->fetchArray()){
+			if($data[4]== $v){
+				if($data[3]=='良かった点'){
+					echo '<div class="own_info_1">';
 				echo '<p>' . $data[2] . '</p><br>';//日付
 				echo '<p>[内容]<br>' . $data[1] . '</p>';
 				echo '<div class="name_link">' . $data[0] . '</div></div>';
@@ -71,57 +80,8 @@ require('db_connect.php');
 	}
 	echo '</td>';
 	echo '</tr>';
-	echo '<tr>';
-	echo '<td bgcolor="#FFF" width="120" align="center"><font color="#000">物品</font></td>';
-	echo '<td bgcolor="#FFF" width="620">';
-	while($data = $results->fetchArray()){
-		if($data[4]=='物品'){
-			if($data[3]=='良かった点'){
-				echo '<div class="own_info_1">';
-				echo '<p>' . $data[2] . '</p><br>';//日付
-				echo '<p>[内容]<br>' . $data[1] . '</p>';
-				echo '<div class="name_link">' . $data[0] . '</div></div>';
-			}else if($data[3]=='問題点'){
-				echo '<div class="own_info_2">';
-				echo '<p>' . $data[2] . '</p><br>';//日付
-				echo '<p>[内容]<br>' . $data[1] . '</p>';
-				echo '<div class="name_link">' . $data[0] . '</div></div>';
-			}else if($data[3]=='次年度したい'){
-				echo '<div class="own_info_3">';
-				echo '<p>' . $data[2] . '</p><br>';//日付
-				echo '<p>[内容]<br>' . $data[1] . '</p>';
-				echo '<div class="name_link">' . $data[0] . '</div></div>';
-			}
-		}
-		}
-	echo '</td>';
-	echo '</tr>';
-	echo '<tr>';
-	echo '<td bgcolor="#FFF" width="120" align="center"><font color="#000">広報</font></td>';
-	echo '<td bgcolor="#FFF" width="620">';
-	while($data = $results->fetchArray()){
-		if($data[4]=='広報'){
-			if($data[3]=='良かった点'){
-				echo '<div class="own_info_1">';
-				echo '<p>' . $data[2] . '</p><br>';//日付
-				echo '<p>[内容]<br>' . $data[1] . '</p>';
-				echo '<div class="name_link">' . $data[0] . '</div></div>';
-			}else if($data[3]=='問題点'){
-				echo '<div class="own_info_2">';
-				echo '<p>' . $data[2] . '</p><br>';//日付
-				echo '<p>[内容]<br>' . $data[1] . '</p>';
-				echo '<div class="name_link">' . $data[0] . '</div></div>';
-			}else if($data[3]=='次年度したい'){
-				echo '<div class="own_info_3">';
-				echo '<p>' . $data[2] . '</p><br>';//日付
-				echo '<p>[内容]<br>' . $data[1] . '</p>';
-				echo '<div class="name_link">' . $data[0] . '</div></div>';
-			}
-		}
-		}
-	echo '</td>';
-	echo '</tr>';
-	echo '</table>';
+}
+echo '</table>';
 
 $db->close();
 ?>

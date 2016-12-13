@@ -34,6 +34,8 @@ session_start();
 		$state = $_POST['state'];
 		$genre = $_POST['genre'];
 		$comment = $_POST['comment'];
+		
+		if($genre === "") $genre = $_POST['new_genre'];
 
 		//$_SESSION['your_name']= $_POST['your_name'];
 		//$_SESSION['comment']= $_POST['comment'];

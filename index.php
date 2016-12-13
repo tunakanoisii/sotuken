@@ -60,17 +60,44 @@ require('db_connect.php');
 		}
 	}
 
-	echo '<table border="1"  cellspacing="0" cellpadding="5" bordercolor="#000">';
-	foreach ($event_arr as $t) {
-		echo '<th bgcolor="#FFF" width="620"><font color="#000">' . $t . '</font></th>';
-	}
+	$state_arr = array(
+		"良かった点" => "own_info_1",
+		"問題点" => "own_info_2",
+		"次年度したい" => "own_info_3"
+	);
 
+	echo '<table border="1"  cellspacing="0" cellpadding="5" bordercolor="#000">';
+	echo '<tr>';
+	foreach ($event_arr as $t) {
+		echo '<th bgcolor="#FFF" width="1000"><font color="#000">' . $t . '</font></th>';
+	}
+	echo '</tr>';
+
+	for($i = 0; $i < count($genre_arr); $i++) {
+		echo '<tr height="100px">';
+		echo '<td bgcolor="#FFF" width="150px" align="center"><font color="#000">';
+		echo $genre_arr[$i];
+		echo '</font></td>';
+		for($j = 1; $j < count($event_arr); $j++) {
+			$r = $db->query("SELECT * from info where genre='".$genre_arr[$i]."' and event='".$event_arr[$j]."'");
+			echo '<td>';
+			while($d = $r->fetchArray()) {
+				echo '<div class="'.$state_arr[$d[3]].'">';
+				echo '<p>' . $d[2] . '</p><br>';//日付
+				echo '<p>[内容]<br>' . $d[1] . '</p>';
+				echo '<div class="name_link">' . $d[0] . '</div></div>';
+			}
+			echo '</td>';
+		}
+		echo '</tr>';
+	}
+	/*
 	foreach ($genre_arr as $v) {
 		echo '<tr>';
 		echo '<td bgcolor="#FFF" width="120" align="center"><font color="#000">' . $v . '</font></td>';
 		echo '<td bgcolor="#FFF" width="620">';
 		while($data = $results->fetchArray()){
-			if($data[4]== $v and $data[5]==$t){
+			if($data[4]== $v){
 				if($data[3]=='良かった点'){
 					echo '<div class="own_info_1">';
 				echo '<p>' . $data[2] . '</p><br>';//日付
@@ -91,7 +118,8 @@ require('db_connect.php');
 	}
 	echo '</td>';
 	echo '</tr>';
-}
+	*/
+
 echo '</table>';
 
 $db->close();

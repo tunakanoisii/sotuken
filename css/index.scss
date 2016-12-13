@@ -26,9 +26,10 @@ html, body{
 
 #infos{
 	margin: 0 auto;
-	width: 900px;
+	width: auto;
 	height: 100%;
 	padding: 30px;
+	background-color: #666;
 }
 
 #form{
@@ -153,6 +154,14 @@ header{
 	position: absolute;
 }
 
+#mypage_contents{
+	margin: 0 auto;
+	width: 100%;
+	height: 100%;
+
+	position: relative;
+}
+
 .mypage_form{
 	margin: 20px 40px;
 	margin-right: 20px;
@@ -162,7 +171,7 @@ header{
 	border: 1px solid #000;
 
 	float: left;
-	position: relative;
+	position: absolute;
 	left: 20px;
 
 	#form{

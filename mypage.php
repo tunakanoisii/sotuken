@@ -111,7 +111,7 @@ if(!empty($_POST)){
 					echo '<input type="radio" name="genre" value="'.$v.'">'.$v;
 				}
 				?>
-				
+
 				<p><input type="radio" name="genre" value="">その他<input type="text" name="new_genre" size="30"></p>
 				<?php if(!empty($error['genre']) && $error['genre'] == 'blank'): ?>
 					<p><font color="red">1つ選択してください</font></p>
@@ -129,9 +129,20 @@ if(!empty($_POST)){
 
 	<div id="mypage_toukou">
 		<?php
-		echo '<h1>' . $_SESSION['name'] . 'さんの投稿</h1>';
+		echo '<h3>' . $_SESSION['name'] . 'さんの目標(<a href="mokuhyou.php">変更</a>)</h3>';
 		$db = new SQLite3('/Applications/MAMP/db/sqlite/test_db.db');
+		//$count = $db->query("SELECT count(*) FROM mokuhyou WHERE name='もえなつ'");
+		//$count_results = count($count);
 
+		$results = $db->query("SELECT * FROM mokuhyou WHERE name='" . $_SESSION['name'] . "'order by date desc");
+		$data = $results->fetchArray();
+
+		echo '<p>' . $data["mokuhyou"] . '</p></br>' ;
+		$db->close();
+
+		echo '<h3>' . $_SESSION['name'] . 'さんの投稿</h3>';
+
+		$db = new SQLite3('/Applications/MAMP/db/sqlite/test_db.db');
 		$query = "SELECT * FROM info WHERE name='" . $_SESSION['name'] . "' order by date desc";
 		$results = $db->query($query);
 	//セッションデータと照らし合わせ

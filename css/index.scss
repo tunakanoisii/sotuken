@@ -29,7 +29,6 @@ html, body{
 	width: auto;
 	height: 100%;
 	padding: 30px;
-	background-color: #666;
 }
 
 #form{
@@ -45,7 +44,7 @@ header{
 	width: 100%;
 	height: 100px;
 
-	background-color: #F0FFFF;
+	background-color: #F0F8FF;
 
 	position: relative;
 
@@ -160,37 +159,44 @@ header{
 	height: 100%;
 
 	position: relative;
-}
 
-.mypage_form{
-	margin: 20px 40px;
-	margin-right: 20px;
-	padding: 19px;
-	width: 300px;
-	height: auto;
-	border: 1px solid #000;
 
-	float: left;
-	position: absolute;
-	left: 20px;
+	.mypage_form{
+		margin: 20px 40px;
+		margin-right: 20px;
+		padding: 19px;
+		width: 300px;
+		height: auto;
+		border: 1px solid #000;
 
-	#form{
-		margin: 20px auto;
-		width: 310px;
-		height: 200px;
+		float: left;
+		position: relative;
+		left: 10px;
+
+		#form{
+			margin: 20px auto;
+			width: 310px;
+			height: 200px;
+		}
+	}
+
+
+	#mypage_toukou{
+		margin: 20px 40px;
+		padding: 30px;
+		width: 900px;
+		height: auto;
+
+		background-color: #FDF5E6;
+
+		float: left;
+
+		a{
+			color: #FA8072;
+		}
+
 	}
 }
 
-#mypage_toukou{
-	margin: 20px 40px;
-	padding: 30px;
-	width: 900px;
-	height: auto;
 
-	background-color: #FDF5E6;
-
-	float: left;
-	position: absolute;
-	right: 10px;
-}
 

@@ -5,12 +5,13 @@
 	}
 
 	if (isset($_POST["add"])) {
+        $id = $_POST["id"];
         $nm = $_POST["name"];
         $tx = $_POST["text"];
         $st = $_POST["state"];
         $ge = $_POST["genre"];
         $ev = $_POST["event"];
-        $sql = "insert into info(name, own_text, date, state, genre ,event) values('".$nm."','".$tx."','".date('Y/m/d H:i:s')."','".$st."','".$ge."','".$ev."')";
+        $sql = "insert into info(id, name, own_text, date, state, genre ,event) values('".$id."','".$nm."','".$tx."','".date('Y/m/d H:i:s')."','".$st."','".$ge."','".$ev."')";
         $db->query($sql);
         header("Location: db.php");
     }
@@ -38,6 +39,7 @@ $(document).ready(function() {
     echo "<table class='list tablesorter'>";
     echo "<thead>";
     echo "<tr>";
+    echo "<th>id</th>";
     echo "<th>名前</th>";
     echo "<th>テキスト</th>";
     echo "<th>日付</th>";
@@ -49,6 +51,7 @@ $(document).ready(function() {
     echo "<tbody>";
     while($data = $res->fetchArray()) {
         echo "<tr>";
+        print "<td>".$data["id"]."</td>";
         print "<td>".$data["name"]."</td>";
         print "<td>".$data["own_text"]."</td>";
         print "<td>".$data["date"]."</td>";
@@ -64,6 +67,9 @@ $(document).ready(function() {
 
 	<form id="add" name="add" action="<?php print($_SERVER['PHP_SELF']) ?>" method="POST">
 		<fieldset>
+        <label for="id">id</label>
+        <input type="text" id="id" name="id" value="">
+        <br>
 		<label for="name">なまえ</label>
 		<input type="text" id="name" name="name" value="">
 		<br>

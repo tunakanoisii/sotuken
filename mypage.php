@@ -8,16 +8,16 @@ if(!empty($_POST)){
 		$error['state'] = 'blank';
 	}
 
+	if($_POST['event'] == ''){
+		$error['event'] = 'blank';
+	}
+
 	if($_POST['genre'] == ''){
 		$error['genre'] = 'blank';
 	}
 
 	if($_POST['comment'] == ''){
 		$error['comment'] = 'blank';
-	}
-
-	if($_POST['event'] == ''){
-		$error['event'] = 'blank';
 	}
 
 	if(empty($error)){
@@ -54,7 +54,7 @@ if(!empty($_POST)){
 
 	<div id="mypage_contents">
 		<div class="mypage_form">
-			<form method="post" action="mypage.php">
+			<form action="mypage.php" method="post">
 				<?php 
 				echo '<div class="contents">[名前]<br/>'.$_SESSION['name'].'</div>'
 				?>
@@ -64,7 +64,7 @@ if(!empty($_POST)){
 				<input type="radio" name="state" value="良かった点">良かった点
 				<input type="radio" name="state" value="問題点">問題点
 				<input type="radio" name="state" value="次年度したい">次年度したい
-				<?php if(!empty($error['state']) && $error['state'] == 'blank'): ?>
+				<?php if(!empty($error['state']) or $error['state'] == 'blank'): ?>
 					<p><font color="red">1つ選択してください</font></p>
 				<?php endif; ?>
 				<br/>
@@ -83,10 +83,12 @@ if(!empty($_POST)){
 						array_push($event_arr, $data["event"]);
 					}
 				}
+
 				for($i =1; $i < count($event_arr); $i++){
 					echo '<input type="radio" name="event" value="'.$event_arr[$i].'">'.$event_arr[$i] . '</br>';
 				}
 				?>
+
 				<p><input type="radio" name="event" value="">その他<input type="text" name="new_event" size="30"></p>
 				<?php if(!empty($error['event']) && $error['event'] == 'blank'): ?>
 					<p><font color="red">1つ選択してください</font></p>
@@ -123,16 +125,15 @@ if(!empty($_POST)){
 			<?php if(!empty($error['comment']) && $error['comment'] == 'blank'): ?>
 				<p><font color="red">内容を入力してください</font></p>
 			<?php endif; ?>
-			<input type ="submit" name="kakunin" value="確認画面へ">
+			<input type ="submit" value="確認画面へ">
 		</form>
 	</div>
+
 
 	<div id="mypage_toukou">
 		<?php
 		echo '<h3>' . $_SESSION['name'] . 'さんの目標(<a href="mokuhyou.php">変更</a>)</h3>';
 		$db = new SQLite3('/Applications/MAMP/db/sqlite/test_db.db');
-		//$count = $db->query("SELECT count(*) FROM mokuhyou WHERE name='もえなつ'");
-		//$count_results = count($count);
 
 		$results = $db->query("SELECT * FROM mokuhyou WHERE name='" . $_SESSION['name'] . "'order by date desc");
 		$data = $results->fetchArray();
@@ -148,24 +149,24 @@ if(!empty($_POST)){
 	//セッションデータと照らし合わせ
 
 		while($data = $results->fetchArray()){
-			if($data[3]=='良かった点'){
+			if($data[4]=='良かった点'){
 				echo '<div class="own_info_1">';
-		echo '<p>' . $data[2] . '</p><br>';//日付
-		echo '<p>' . $data[3] . '</p><br>';//良かった点、改善点、その他
-		echo '<p>[内容]<br>' . $data[1] . '</p>';
-		echo '<div class="name_link">' . $data[0] . '</div></div>';
-	}else if($data[3]=='問題点'){
+		echo '<p>' . $data[3] . '</p><br>';//日付
+		echo '<p>' . $data[4] . '</p><br>';//良かった点、改善点、その他
+		echo '<p>[内容]<br>' . $data[2] . '</p>';
+		echo '<div class="name_link">' . $data[1] . '</div></div>';
+	}else if($data[4]=='問題点'){
 		echo '<div class="own_info_2">';
-		echo '<p>' . $data[2] . '</p><br>';//日付
-		echo '<p>' . $data[3] . '</p><br>';//良かった点、改善点、その他
-		echo '<p>[内容]<br>' . $data[1] . '</p>';
-		echo '<div class="name_link">' . $data[0] . '</div></div>';
-	}else if($data[3]=='次年度したい'){
+		echo '<p>' . $data[3] . '</p><br>';//日付
+		echo '<p>' . $data[4] . '</p><br>';//良かった点、改善点、その他
+		echo '<p>[内容]<br>' . $data[2] . '</p>';
+		echo '<div class="name_link">' . $data[1] . '</div></div>';
+	}else if($data[4]=='次年度したい'){
 		echo '<div class="own_info_3">';
-		echo '<p>' . $data[2] . '</p><br>';//日付
-		echo '<p>' . $data[3] . '</p><br>';//良かった点、改善点、その他
-		echo '<p>[内容]<br>' . $data[1] . '</p>';
-		echo '<div class="name_link">' . $data[0] . '</div></div>';
+		echo '<p>' . $data[3] . '</p><br>';//日付
+		echo '<p>' . $data[4] . '</p><br>';//良かった点、改善点、その他
+		echo '<p>[内容]<br>' . $data[2] . '</p>';
+		echo '<div class="name_link">' . $data[1] . '</div></div>';
 	}
 }
 

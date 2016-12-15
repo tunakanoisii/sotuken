@@ -34,11 +34,11 @@ session_start();
 		$state = $_POST['state'];
 		$genre = $_POST['genre'];
 		$comment = $_POST['comment'];
+
+		echo $state;
 		
 		if($genre === "") $genre = $_POST['new_genre'];
 
-		//$_SESSION['your_name']= $_POST['your_name'];
-		//$_SESSION['comment']= $_POST['comment'];
 		$comment = nl2br($comment);
 
 		$data = "<hr>\r\n";

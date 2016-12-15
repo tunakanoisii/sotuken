@@ -91,7 +91,7 @@ header .menu a {
   margin: 10px 5px;
   padding: 20px;
   width: 248px;
-  height: 200px;
+  height: auto;
   float: left;
   border: 1px solid #000;
   background-color: #FFDAB9;
@@ -102,7 +102,7 @@ header .menu a {
   margin: 10px 5px;
   padding: 20px;
   width: 248px;
-  height: 200px;
+  height: auto;
   float: left;
   border: 1px solid #000;
   background-color: #B0E0E6;
@@ -113,7 +113,7 @@ header .menu a {
   margin: 10px 5px;
   padding: 20px;
   width: 248px;
-  height: 200px;
+  height: auto;
   float: left;
   border: 1px solid #000;
   background-color: #FFF;

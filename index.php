@@ -41,8 +41,8 @@ require('db_connect.php');
 		</div>
 
 
-		<?php
-		$query = "SELECT * from info";
+	<?php
+	$query = "SELECT * from info";
 	$results = $db->query('SELECT * FROM info order by date desc');//DBのデータを降順にする
 
 	$genre_arr = array("スケジュール","物品","広報");
@@ -64,7 +64,7 @@ require('db_connect.php');
 		"良かった点" => "own_info_1",
 		"問題点" => "own_info_2",
 		"次年度したい" => "own_info_3"
-	);
+		);
 
 	echo '<table border="1"  cellspacing="0" cellpadding="5" bordercolor="#000">';
 	echo '<tr>';
@@ -74,18 +74,23 @@ require('db_connect.php');
 	echo '</tr>';
 
 	for($i = 0; $i < count($genre_arr); $i++) {
+		$_SESSION['genre_arr_i'] = $i;
 		echo '<tr height="100px">';
 		echo '<td bgcolor="#FFF" width="150px" align="center"><font color="#000">';
 		echo $genre_arr[$i];
 		echo '</font></td>';
 		for($j = 1; $j < count($event_arr); $j++) {
+			$_SESSION['event_arr_j'] = $j;
 			$r = $db->query("SELECT * from info where genre='".$genre_arr[$i]."' and event='".$event_arr[$j]."'");
 			echo '<td>';
 			while($d = $r->fetchArray()) {
-				echo '<div class="'.$state_arr[$d[3]].'">';
-				echo '<p>' . $d[2] . '</p><br>';//日付
-				echo '<p>[内容]<br>' . $d[1] . '</p>';
-				echo '<div class="name_link">' . $d[0] . '</div></div>';
+				echo '<div class="'.$state_arr[$d[4]].'">';
+				echo '<p>' . $d[3] . '</p><br>';//日付
+				echo '<p>[内容]<br>' . $d[2] . '</p>';
+				echo '<div class="name_link">' . $d[1] . '</div></br></br>';
+
+				echo '<p><a href="comments.php">[私ならこうする！]</a></p></br></div>';
+				echo '</div>';
 			}
 			echo '</td>';
 		}
@@ -120,10 +125,10 @@ require('db_connect.php');
 	echo '</tr>';
 	*/
 
-echo '</table>';
+	echo '</table>';
 
-$db->close();
-?>
+	$db->close();
+	?>
 
 </div>
 </body>

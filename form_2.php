@@ -27,7 +27,12 @@
 		<?php
 		session_start();
 		$db = new SQLite3('/Applications/MAMP/db/sqlite/test_db.db');
-		//$db = new SQLite3('C:\xampp\db\test_db.db');
+		
+		$test = $db->query("SELECT count(*) FROM info");
+		$data=$test->fetchArray();//配列に直す
+		$count=count($data);//今登録してある投稿の数を数える
+
+		$id = $count + 1;
 		$all_data= $_POST['all_data'];
 		$your_name=$_POST['your_name'];
 		$state=$_POST['state'];
@@ -36,12 +41,13 @@
 
 		$date = date('Y/m/d H:i:s');
 
-		$stmt = $db->prepare("INSERT INTO info(name, own_text, date, state, genre) VALUES(?, ?, ?, ?, ?)");
-		$stmt->bindParam(1, $your_name);
-		$stmt->bindParam(2, $comment);
-		$stmt->bindParam(3, $date);
-		$stmt->bindParam(4, $state);
-		$stmt->bindParam(5, $genre);
+		$stmt = $db->prepare("INSERT INTO info(id, name, own_text, date, state, genre) VALUES(?, ?, ?, ?, ?, ?)");
+		$stmt->bindParam(1, $id);
+		$stmt->bindParam(2, $your_name);
+		$stmt->bindParam(3, $comment);
+		$stmt->bindParam(4, $date);
+		$stmt->bindParam(5, $state);
+		$stmt->bindParam(6, $genre);
 		$stmt->execute();
 
 		//echo $_SESSION["your_name"];

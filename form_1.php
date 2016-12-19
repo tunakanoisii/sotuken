@@ -36,7 +36,8 @@ session_start();
 		$genre = $_SESSION['post']['genre'];
 		$comment = $_SESSION['post']['comment'];
 		
-		if($genre === "") $genre = $_POST['new_genre'];
+		if($event == "その他") $event = $_SESSION['post']['new_event'];
+		if($genre == "その他") $genre = $_SESSION['post']['new_genre'];
 
 		$comment = nl2br($comment);
 

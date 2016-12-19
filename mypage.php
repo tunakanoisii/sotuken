@@ -3,19 +3,15 @@ session_start();
 require('db_connect.php');
 
 if(!empty($_POST)){
-
 	if($_POST['state'] == ''){
 		$error['state'] = 'blank';
 	}
-
 	if($_POST['event'] == ''){
 		$error['event'] = 'blank';
 	}
-
 	if($_POST['genre'] == ''){
 		$error['genre'] = 'blank';
 	}
-
 	if($_POST['comment'] == ''){
 		$error['comment'] = 'blank';
 	}
@@ -87,8 +83,8 @@ if(!empty($_POST)){
 					echo '<input type="radio" name="event" value="'.$event_arr[$i].'">'.$event_arr[$i] . '</br>';
 				}
 				?>
+				<p><input type="radio" name="event" value="その他">その他<input type="text" name="new_event" size="30"></p>
 
-				<p><input type="radio" name="event" value="">その他<input type="text" name="new_event" size="30"></p>
 				<?php if(!empty($error['event']) && $error['event'] == 'blank'): ?>
 					<p><font color="red">1つ選択してください</font></p>
 				<?php endif; ?>
@@ -113,7 +109,8 @@ if(!empty($_POST)){
 				}
 				?>
 
-				<p><input type="radio" name="genre" value="">その他<input type="text" name="new_genre" size="30"></p>
+				<p><input type="radio" name="genre" value="その他">その他<input type="text" name="new_genre" size="30"></p>
+
 				<?php if(!empty($error['genre']) && $error['genre'] == 'blank'): ?>
 					<p><font color="red">1つ選択してください</font></p>
 				<?php endif; ?>

@@ -29,19 +29,8 @@ require('db_connect.php');
 
 <body>
 	<div id="infos">
-		<div id="form">
-
-			<?php
-			$db = new SQLite3('/Applications/MAMP/db/sqlite/test_db.db');
-			if(isset($_SESSION['name'])) {
-				echo "ようこそ" . $_SESSION['name'] . "さん";
-			} else {
-				echo "ログインはこちら";
-			}?>
-		</div>
-
-
 		<?php
+		$db = new SQLite3('/Applications/MAMP/db/sqlite/test_db.db');
 		$query = "SELECT * from info";
 	$results = $db->query('SELECT * FROM info order by date desc');//DBのデータを降順にする
 
@@ -65,6 +54,19 @@ require('db_connect.php');
 		"問題点" => "own_info_2",
 		"次年度したい" => "own_info_3"
 		);
+
+	echo '<div class="state_all">';
+	echo '<div class="state_color_1"></div>';
+	echo '<div class="state_text">良かった点</div>';
+	echo '</div>';
+	echo '<div class="state_all">';
+	echo '<div class="state_color_2"></div>';
+	echo '<div class="state_text">問題点</div>';
+	echo '</div>';
+	echo '<div class="state_all">';
+	echo '<div class="state_color_3"></div>';
+	echo '<div class="state_text">来年やりたいこと</div>';
+	echo '</div>';
 
 	echo '<table border="1"  cellspacing="0" cellpadding="5" bordercolor="#000">';
 	echo '<tr>';

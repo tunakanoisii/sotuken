@@ -126,7 +126,6 @@ if(!empty($_POST)){
 		</form>
 	</div>
 
-
 	<div id="mypage_toukou">
 		<?php
 		echo '<h3>' . $_SESSION['name'] . 'さんの目標(<a href="mokuhyou.php">変更</a>)</h3>';
@@ -141,36 +140,46 @@ if(!empty($_POST)){
 		echo '<h3>' . $_SESSION['name'] . 'さんの投稿</h3>';
 
 		$db = new SQLite3('/Applications/MAMP/db/sqlite/test_db.db');
-		$query = "SELECT * FROM info WHERE name='" . $_SESSION['name'] . "' order by date desc";
-		$results = $db->query($query);
-	//セッションデータと照らし合わせ
+		$results = $db->query("SELECT * FROM info WHERE name='" . $_SESSION['name'] . "' order by date desc");//セッションデータと照らし合わせ
 
-		while($data = $results->fetchArray()){
-			if($data[4]=='良かった点'){
-				echo '<div class="own_info_1">';
-		echo '<p>' . $data[3] . '</p><br>';//日付
-		echo '<p>' . $data[4] . '</p><br>';//良かった点、改善点、その他
-		echo '<p>[内容]<br>' . $data[2] . '</p>';
-		echo '<div class="name_link">' . $data[1] . '</div></div>';
-	}else if($data[4]=='問題点'){
-		echo '<div class="own_info_2">';
-		echo '<p>' . $data[3] . '</p><br>';//日付
-		echo '<p>' . $data[4] . '</p><br>';//良かった点、改善点、その他
-		echo '<p>[内容]<br>' . $data[2] . '</p>';
-		echo '<div class="name_link">' . $data[1] . '</div></div>';
-	}else if($data[4]=='次年度したい'){
-		echo '<div class="own_info_3">';
-		echo '<p>' . $data[3] . '</p><br>';//日付
-		echo '<p>' . $data[4] . '</p><br>';//良かった点、改善点、その他
-		echo '<p>[内容]<br>' . $data[2] . '</p>';
-		echo '<div class="name_link">' . $data[1] . '</div></div>';
-	}
-}
+		$genre_arr = array("スケジュール","物品","広報");
+		$event_arr = array("");
 
-$db->close();
-?>
-</div>
-</div>
+		while($genre_data = $results->fetchArray()){
+			if(!in_array($genre_data["genre"], $genre_arr)) {
+				array_push($genre_arr, $genre_data["genre"]);
+			}
+		}
+
+		while($event_data = $results->fetchArray()){
+			if(!in_array($event_data["event"], $event_arr)) {
+				array_push($event_arr, $event_data["event"]);
+			}
+		}
+
+		$state_arr = array(
+			"良かった点" => "own_info_1",
+			"問題点" => "own_info_2",
+			"次年度したい" => "own_info_3"
+			);
+
+		while($d = $results->fetchArray()){
+			echo '<div class="'.$state_arr[$d[4]].'">';
+				echo '<p>' . $d[3] . '</p><br>';//日付
+				echo '<p>[内容]<br>' . $d[2] . '</p></br>';
+				echo '<p>[コメント]</p>';
+				$c = $db->query("SELECT * from comments where toukou_id='" . $d[0] . "'order by date desc");
+
+				while($o = $c->fetchArray()) {
+					echo '<p>' . $o[2]. '/' . $o[3] . '</p></br>';
+				}
+				echo '</div></a>';
+			}
+
+			$db->close();
+			?>
+		</div>
+	</div>
 
 </div>
 </body>

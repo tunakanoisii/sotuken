@@ -13,6 +13,10 @@ html, body{
 	height: 100%;
 	overflow-x: hidden;
 	transition:all 0.5s;
+
+	table{
+		float: left;
+	}
 }
 
 #mainform{
@@ -103,16 +107,63 @@ header{
 
 }
 
+.state_all{
+	margin: 4px;
+	width: auto;
+	height: 30px;
+
+	float: left;
+
+	.state_text{
+		margin: 5px;
+		width: auto;
+		height: 20px;
+		line-height: 20px;
+
+		float: left;
+	}
+}
+
+.state_color_1{
+	margin: 4px;
+	width: 20px;
+	height: 20px;
+	border: 1px solid #000;
+
+	background-color: #FFDAB9;
+	float: left;
+}
+
+.state_color_2{
+	margin: 4px;
+	width: 20px;
+	height: 20px;
+	border: 1px solid #000;
+
+	background-color: #B0E0E6;
+	float: left;
+}
+
+.state_color_3{
+	margin: 4px;
+	width: 20px;
+	height: 20px;
+	border: 1px solid #000;
+
+	background-color: #FFF;
+	float: left;
+}
+
 
 .own_info_1{
 	margin: 10px 5px;
 	padding: 20px;
 	width: 248px;
 	height: auto;
-	float: left;
 	border: 1px solid #000;
 	background-color: #FFDAB9;
 
+	float: left;
 	position: relative;
 }
 
@@ -121,10 +172,10 @@ header{
 	padding: 20px;
 	width: 248px;
 	height: auto;
-	float: left;
 	border: 1px solid #000;
 	background-color: #B0E0E6;
 
+	float: left;
 	position: relative;
 }
 
@@ -133,10 +184,10 @@ header{
 	padding: 20px;
 	width: 248px;
 	height: auto;
-	float: left;
 	border: 1px solid #000;
 	background-color: #FFF;
 
+	float: left;
 	position: relative;
 }
 
@@ -161,7 +212,7 @@ header{
 	border: 1px solid #000;
 	background-color: #B0E0E6;
 
-	
+	position: relative;
 }
 
 .comment_info_3{
@@ -178,7 +229,6 @@ header{
 
 .name_link{
 	margin: 0 auto;
-	margin-bottom: 10px;
 	margin-right: 10px;
 	width: 248px;
 	height: 30px;
@@ -186,6 +236,7 @@ header{
 	right: 20px;
 	text-align: right;
 
+	float: left;
 	position: absolute;
 }
 
@@ -218,7 +269,7 @@ header{
 
 
 	#mypage_toukou{
-		margin: 20px 40px;
+		margin: 20px;
 		padding: 30px;
 		width: 900px;
 		height: auto;

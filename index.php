@@ -85,14 +85,15 @@ require('db_connect.php');
 				echo '<a href="./comments.php?id='.$d[0].'"';
 				echo '<div class="'.$state_arr[$d[4]].'">';
 				echo '<p>' . $d[3] . '</p><br>';//日付
-				echo '<p>[内容]<br>' . $d[2] . '</p>';
-				echo '<div class="name_link">' . $d[1] . '</div></br></br>';
+				echo '<p>[内容]<br>' . $d[2] . '</p></br>';
+				echo '<p>[コメント]</p>';
 
-				/*$c = $db->query("SELECT * from comments where toukou_id='" . $d[0] . "'order by date desc");
+				$c = $db->query("SELECT * from comments where toukou_id='" . $d[0] . "'order by date desc");
+
 				while($o = $c->fetchArray()) {
-					echo '<p>' . $o[2] . '</p></br></br>';
+					echo '<p>' . $o[2]. '/' . $o[3] . '</p></br>';
 				}
-				*/
+				echo '<div class="name_link">' . $d[1] . '</div></br></br>';
 				echo '</div></a>';
 			}
 			echo '</td>';

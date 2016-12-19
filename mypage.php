@@ -32,22 +32,22 @@ if(!empty($_POST)){
 	<title>マイページ</title>
 </head>
 
-<body>
-	<header>
-		<div id="top">
-			<a href="index.php">トップページに戻るよ！</a>
-		</div>
-		<?php
-		if(!isset($_SESSION['name'])){
-			echo '<div class="menu">新規登録</div>';
-			echo '<div class="menu">ログイン</div>';
-		}else{
-			echo '<div class="menu">ログアウト</div>';
-			echo '<div class="menu"><a href="mypage.php">マイページ</a></div>';
-		}
-		?>
-	</header>
+<header>
+	<div id="top">
+		<a href="index.php">トップページに戻るよ！</a>
+	</div>
+	<?php
+	if(!isset($_SESSION['name'])){
+		echo '<div class="menu">新規登録</div>';
+		echo '<div class="menu">ログイン</div>';
+	}else{
+		echo '<div class="menu">ログアウト</div>';
+		echo '<div class="menu"><a href="mypage.php">マイページ</a></div>';
+	}
+	?>
+</header>
 
+<body>
 	<div id="mypage_contents">
 		<div class="mypage_form">
 			<form action="mypage.php" method="post">
@@ -63,6 +63,7 @@ if(!empty($_POST)){
 				<?php if(!empty($error['state']) or $error['state'] == 'blank'): ?>
 					<p><font color="red">1つ選択してください</font></p>
 				<?php endif; ?>
+				<br/>
 				<br/>
 
 				<div class="contents">[イベント名]</div>
@@ -121,7 +122,6 @@ if(!empty($_POST)){
 			<?php if(!empty($error['comment']) && $error['comment'] == 'blank'): ?>
 				<p><font color="red">内容を入力してください</font></p>
 			<?php endif; ?>
-
 			<input type ="submit" value="確認画面へ">
 		</form>
 	</div>
@@ -135,7 +135,7 @@ if(!empty($_POST)){
 		$results = $db->query("SELECT * FROM mokuhyou WHERE name='" . $_SESSION['name'] . "'order by date desc");
 		$data = $results->fetchArray();
 
-		echo '<p>' . $data["mokuhyou"] . '</p></br>' ;
+		echo '<p>' . $data["mokuhyou"] . '</p></br>';
 		$db->close();
 
 		echo '<h3>' . $_SESSION['name'] . 'さんの投稿</h3>';

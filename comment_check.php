@@ -9,10 +9,13 @@ if(!isset($_SESSION['id_comment'])){
 
 if(isset($_SESSION['id_comment']['comment'])){
 	$db = new SQLite3('/Applications/MAMP/db/sqlite/test_db.db');
+	$date = date('Y/m/d H:i:s');
 
-	$sql = $db->prepare("INSERT INTO comments(id, toukou_id, comment) VALUES(?, ?, ?)");
+	$sql = $db->prepare("INSERT INTO comments(id, toukou_id, name, comment, date) VALUES(?, ?, ?, ?, ?)");
 	$sql->bindParam(2, $_SESSION['id_comment']['id']);
-	$sql->bindParam(3, $_SESSION['id_comment']['comment']);
+	$sql->bindParam(3, $_SESSION['name']);
+	$sql->bindParam(4, $_SESSION['id_comment']['comment']);
+	$sql->bindParam(5, $date);
 	$sql->execute();
 
 	header('Location: index.php');

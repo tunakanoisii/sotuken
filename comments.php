@@ -9,7 +9,7 @@ if(!empty($_POST)){
 	}
 
 	if(empty($error)){
-		$_SESSION['comment']  = $_POST;
+		$_SESSION['id_comment']  = $_POST;
 		header('Location: comment_check.php');
 		exit();
 	}
@@ -61,11 +61,12 @@ if(!empty($_POST)){
 	?>
 
 	<p>私ならこうする！</p>
-	<form action="<?php echo './comment_check.php?id=' . $_GET['id'] . '"' ?>'" method="post">
+	<form action="comments.php" method="post">
 	<textarea name="comment" cols="80" rows="10"></textarea><br/>
 		<?php if(!empty($error['comment']) && $error['comment'] == 'blank'): ?>
 				<p><font color="red">内容を入力してください</font></p>
 			<?php endif; ?>
+		<input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
 		<input type ="submit" value="コメントする">
 	</form>
 	

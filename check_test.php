@@ -7,9 +7,6 @@ if(!isset($_SESSION['join'])){
   exit;
 }
 
-//問題部分＼(^o^)／
-
-//new_person.phpの$_POSTを認識してるんじゃないかなーーーーー
 if(isset($_POST)){
   $sql = $db->prepare("INSERT INTO datas(name, pass) VALUES(?, ?)");
 

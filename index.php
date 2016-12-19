@@ -34,7 +34,7 @@ require('db_connect.php');
 			<?php
 			$db = new SQLite3('/Applications/MAMP/db/sqlite/test_db.db');
 			if(isset($_SESSION['name'])) {
-				echo "ようこそ".$_SESSION['name']."さん";
+				echo "ようこそ" . $_SESSION['name'] . "さん";
 			} else {
 				echo "ログインはこちら";
 			}?>
@@ -99,34 +99,6 @@ require('db_connect.php');
 		}
 		echo '</tr>';
 	}
-	/*
-	foreach ($genre_arr as $v) {
-		echo '<tr>';
-		echo '<td bgcolor="#FFF" width="120" align="center"><font color="#000">' . $v . '</font></td>';
-		echo '<td bgcolor="#FFF" width="620">';
-		while($data = $results->fetchArray()){
-			if($data[4]== $v){
-				if($data[3]=='良かった点'){
-					echo '<div class="own_info_1">';
-				echo '<p>' . $data[2] . '</p><br>';//日付
-				echo '<p>[内容]<br>' . $data[1] . '</p>';
-				echo '<div class="name_link">' . $data[0] . '</div></div>';
-			}else if($data[3]=='問題点'){
-				echo '<div class="own_info_2">';
-				echo '<p>' . $data[2] . '</p><br>';//日付
-				echo '<p>[内容]<br>' . $data[1] . '</p>';
-				echo '<div class="name_link">' . $data[0] . '</div></div>';
-			}else if($data[3]=='次年度したい'){
-				echo '<div class="own_info_3">';
-				echo '<p>' . $data[2] . '</p><br>';//日付
-				echo '<p>[内容]<br>' . $data[1] . '</p>';
-				echo '<div class="name_link">' . $data[0] . '</div></div>';
-			}
-		}
-	}
-	echo '</td>';
-	echo '</tr>';
-	*/
 
 	echo '</table>';
 

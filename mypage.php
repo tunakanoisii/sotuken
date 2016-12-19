@@ -21,7 +21,7 @@ if(!empty($_POST)){
 	}
 
 	if(empty($error)){
-		$_SESSION['join'] = $_POST;
+		$_SESSION['post'] = $_POST;
 		header('Location: form_1.php');
 		exit();
 	}
@@ -67,7 +67,6 @@ if(!empty($_POST)){
 				<?php if(!empty($error['state']) or $error['state'] == 'blank'): ?>
 					<p><font color="red">1つ選択してください</font></p>
 				<?php endif; ?>
-				<br/>
 				<br/>
 
 				<div class="contents">[イベント名]</div>
@@ -125,6 +124,7 @@ if(!empty($_POST)){
 			<?php if(!empty($error['comment']) && $error['comment'] == 'blank'): ?>
 				<p><font color="red">内容を入力してください</font></p>
 			<?php endif; ?>
+
 			<input type ="submit" value="確認画面へ">
 		</form>
 	</div>

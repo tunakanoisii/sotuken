@@ -31,11 +31,10 @@ session_start();
 		<h1>確認画面</h1>
 		<?php
 		$your_name=$_SESSION['name'];
-		$state = $_POST['state'];
-		$genre = $_POST['genre'];
-		$comment = $_POST['comment'];
-
-		echo $state;
+		$state = $_SESSION['post']['state'];
+		$event = $_SESSION['post']['event'];
+		$genre = $_SESSION['post']['genre'];
+		$comment = $_SESSION['post']['comment'];
 		
 		if($genre === "") $genre = $_POST['new_genre'];
 
@@ -44,6 +43,7 @@ session_start();
 		$data = "<hr>\r\n";
 		$data = $data . "[名前]<br />\r\n" . $your_name . "<br />\r\n";
 		$data = $data . "<br />\r\n[状態]<br />\r\n" . $state . "<br />\r\n";
+		$data = $data . "<br />\r\n[イベント名]<br />\r\n" . $event . "<br />\r\n";
 		$data = $data . "<br />\r\n[関連項目]<br />\r\n" . $genre . "<br />\r\n";
 		$data = $data . "<br />\r\n[内容]" . "<br />\r\n";
 		$data = $data . $comment . "<br />\r\n";
@@ -57,6 +57,7 @@ session_start();
 			<input type="hidden" name="all_data" value="<?php echo $data; ?>">
 			<input type="hidden" name="your_name" value="<?php echo $your_name; ?>">
 			<input type="hidden" name="state" value="<?php echo $state; ?>">
+			<input type="hidden" name="event" value="<?php echo $event; ?>">
 			<input type="hidden" name="genre" value="<?php echo $genre; ?>">
 			<input type="hidden" name="comment" value="<?php echo $comment; ?>">
 			<input type="submit" value="送信">
